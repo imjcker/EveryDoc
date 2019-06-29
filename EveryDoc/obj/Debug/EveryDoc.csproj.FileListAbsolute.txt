@@ -1,0 +1,10 @@
+C:\Users\tht\source\repos\EveryDoc\EveryDoc\obj\Debug\EveryDoc.csprojAssemblyReference.cache
+C:\Users\tht\source\repos\EveryDoc\EveryDoc\obj\Debug\EveryDoc.MainForm.resources
+C:\Users\tht\source\repos\EveryDoc\EveryDoc\obj\Debug\EveryDoc.Properties.Resources.resources
+C:\Users\tht\source\repos\EveryDoc\EveryDoc\obj\Debug\EveryDoc.csproj.GenerateResource.cache
+C:\Users\tht\source\repos\EveryDoc\EveryDoc\obj\Debug\EveryDoc.csproj.CoreCompileInputs.cache
+C:\Users\tht\source\repos\EveryDoc\EveryDoc\bin\Debug\EveryDoc.exe.config
+C:\Users\tht\source\repos\EveryDoc\EveryDoc\bin\Debug\EveryDoc.exe
+C:\Users\tht\source\repos\EveryDoc\EveryDoc\bin\Debug\EveryDoc.pdb
+C:\Users\tht\source\repos\EveryDoc\EveryDoc\obj\Debug\EveryDoc.exe
+C:\Users\tht\source\repos\EveryDoc\EveryDoc\obj\Debug\EveryDoc.pdb
