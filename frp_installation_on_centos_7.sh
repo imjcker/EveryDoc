@@ -104,7 +104,7 @@ elif [[ ${option} -eq 2 ]];then
 [common]
 server_addr = ${server_ip}
 server_port = 7000
-dashboard_port = 7500
+dashboard_port = 7400
 dashboard_user = admin
 dashboard_pwd = admin
 
