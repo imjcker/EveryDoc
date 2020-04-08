@@ -1,0 +1,74 @@
+version: '3'
+services:
+  es01:
+    image: elasticsearch:6.4.3
+    container_name: es01
+    environment:
+      - cluster.name=es-cluster
+      - node.name=es01
+      - node.master=true
+      - node.data=true
+      - bootstrap.memory_lock=true
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - http.cors.allow-credentials=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.zen.ping.unicast.hosts=es01,es02"
+      - "discovery.zen.minimum_master_nodes=2"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - esnet
+  es02:
+    image: elasticsearch:6.4.3
+    container_name: es02
+    environment:
+      - cluster.name=es-cluster
+      - node.name=es02
+      - node.master=true
+      - node.data=true
+      - bootstrap.memory_lock=true
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - http.cors.allow-credentials=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.zen.ping.unicast.hosts=es01,es02"
+      - "discovery.zen.minimum_master_nodes=2"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata02:/usr/share/elasticsearch/data
+    networks:
+      - esnet
+  kibana:
+    image: kibana:6.4.3
+    container_name: kibana
+    environment:
+      SERVER_NAME: kibana.local
+      ELASTICSEARCH_URL: http://es01:9200
+    ports:
+      - 5601:5601
+    networks:
+      - esnet
+  headPlugin:
+    image: 'mobz/elasticsearch-head:5'
+    container_name: es-head
+    ports:
+      - '9100:9100'
+    networks:
+      - esnet
+volumes:
+  esdata01:
+    driver: local
+  esdata02:
+    driver: local
+networks:
+  esnet:

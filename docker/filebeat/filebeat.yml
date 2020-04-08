@@ -1,0 +1,15 @@
+# docker run -d --mount type=bind,source=C:\Users\AlanTuring\OneDrive\data\docker\filebeat\filebeat.yml,target=/usr/share/filebeat/filebeat.yml docker.elastic.co/beats/filebeat:6.4.3
+
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - C:\Users\AlanTuring\logs\*.log
+    
+output.elasticsearch:
+  hosts: ["localhost:9200"]
+  
+setup.kibana:
+  host: "localhost:5601"
+  
+  
