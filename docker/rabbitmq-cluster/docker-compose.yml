@@ -12,7 +12,7 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
-      - “25672:25672”
+      - "25672:25672"
     labels:
       NAME: "rabbit-server-1"
     volumes:
