@@ -16,4 +16,4 @@ services:
     labels:
       NAME: "rabbit-server-1"
     volumes:
-      - "./enabled_plugins:/etc/rabbitmq/enabled_plugins"
+      - "/etc/rabbitmq/enabled_plugins:/etc/rabbitmq/enabled_plugins"
