@@ -1,16 +1,18 @@
-web:
-  image: 'gitlab/gitlab-ce:latest'
-  restart: always
-  hostname: 'gitlab.imjcker.com'
-  environment:
-    GITLAB_OMNIBUS_CONFIG: |
-      external_url 'https://gitlab.imjcker.com'
-      # Add any other gitlab.rb configuration here, each on its own line
-  ports:
-    - '2280:80'
-    - '2443:443'
-    - '2222:22'
-  volumes:
-    - 'D:/gitlab/config:/etc/gitlab'
-    - 'D:/gitlab/logs:/var/log/gitlab'
-    - 'D:/gitlab/data:/var/opt/gitlab'
+version: '3'
+services:
+  web:
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    hostname: 'localhost'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://localhost'
+        # Add any other gitlab.rb configuration here, each on its own line
+    ports:
+      - '8085:80'
+      - '8443:443'
+      - '8022:22'
+    volumes:
+      - '/Users/alanturing/gitlab:/etc/gitlab'
+      - '/Users/alanturing/gitlab:/var/log/gitlab'
+      - '/Users/alanturing/gitlab:/var/opt/gitlab'
