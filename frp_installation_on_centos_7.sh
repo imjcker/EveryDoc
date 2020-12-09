@@ -9,8 +9,8 @@ if [[ "" == "$is_wget_installed" ]]; then
     sleep 1s
     yum -y install wget
 fi
-echo "开始下载: https://github.com/fatedier/frp/releases/download/v0.32.0/frp_0.32.0_linux_amd64.tar.gz"
-wget -c --tries=3 -O "frp.tar.gz" https://github.com/fatedier/frp/releases/download/v0.32.0/frp_0.32.0_linux_amd64.tar.gz
+echo "开始下载: https://github.com/fatedier/frp/releases/download/v0.34.3/frp_0.34.3_linux_amd64.tar.gz"
+wget -c --tries=3 -O "frp.tar.gz" https://github.com/fatedier/frp/releases/download/v0.34.3/frp_0.34.3_linux_amd64.tar.gz
 
 echo "开始解压压缩包: frp.tar.gz 到临时文件 ./temp"
 mkdir ./temp
