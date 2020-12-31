@@ -24,6 +24,3 @@ function red(){
 function yellow(){
     echo -e "\033[33m\033[01m[ $1 ]\033[0m"
 }
-
-
-{"apiUrl":"https://47.75.120.109:50836/0ybLAw1B_N1Qs8k6s7R23w","certSha256":"ECFA2F32EFCADD930EB441A1FD0E2300E72B918B0CE17C9BC07D6FB358058AC5"}
