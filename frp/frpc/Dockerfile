@@ -8,13 +8,13 @@ RUN set -x && \
         tar xzf frp_${FRP_VERSION}_linux_amd64.tar.gz && \
         cd frp_${FRP_VERSION}_linux_amd64 && \
         cat>/frp_${FRP_VERSION}_linux_amd64/frpc.ini<<EOF
-        # frpc.ini
-        [common]
-        server_addr = ${frps_ip}
-        server_port = 7000
-        dashboard_port = 7400
-        dashboard_user = admin
-        dashboard_pwd = admin
+# frpc.ini
+[common]
+server_addr = ${frps_ip}
+server_port = 7000
+dashboard_port = 7400
+dashboard_user = admin
+dashboard_pwd = admin
 EOF
 
 VOLUME /frp_${FRP_VERSION}_linux_amd64
