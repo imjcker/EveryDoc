@@ -2,25 +2,18 @@
 #author Alan Turing
 #date 2019.12
 #fetures: install frpc
+usage="Usage: `basename $0` (frps|frpc|all) param1 param2"
 
-is_wget_installed=$(yum list installed | grep wget)
-if [[ "" == "$is_wget_installed" ]]; then
-    echo "检查到系统没有安装wget,开始安装wget"
-    sleep 1s
-    yum -y install wget
-fi
-echo "开始下载: https://github.com/fatedier/frp/releases/download/v0.34.3/frp_0.34.3_linux_amd64.tar.gz"
-wget -c --tries=3 -O "frp.tar.gz" https://github.com/fatedier/frp/releases/download/v0.34.3/frp_0.34.3_linux_amd64.tar.gz
+function installWget() {
+    is_wget_installed=$(yum list installed | grep wget)
+    if [[ "" == "$is_wget_installed" ]]; then
+        echo "检查到系统没有安装wget,开始安装wget"
+        sleep 1s
+        yum -y install wget
+    fi
+}
 
-echo "开始解压压缩包: frp.tar.gz 到临时文件 ./temp"
-mkdir ./temp
-tar -zxvf frp.tar.gz --strip-components 1 -C ./temp/
-echo "install
-        1: frps
-        2: frpc
-"
-read -p "your option: " option
-if [[ ${option} -eq 1 ]]; then
+function installFrps() {
     echo "拷贝frps到/usr/bin目录"
     if [[ -f "/usr/bin/frps" ]]; then
         echo "删除原有frps"
@@ -82,8 +75,11 @@ EOF
         echo "安装完毕,删除临时文件..."
         rm -rf ./temp
     fi
-elif [[ ${option} -eq 2 ]];then
-    echo "拷贝frpc到/usr/bin目录"
+
+}
+
+function installFrpc() {
+        echo "拷贝frpc到/usr/bin目录"
     if [[ -f "/usr/bin/frpc" ]]; then
         echo "删除原有frpc"
         rm -f /usr/bin/frpc
@@ -148,7 +144,33 @@ EOF
         echo "安装完毕,删除临时文件..."
         rm -rf ./temp
     fi
-else
-    echo "wrong option, exit."
-    exit 0
-fi
+}
+
+function download() {
+  installWget
+  echo "开始下载: https://github.com/fatedier/frp/releases/download/v0.34.3/frp_0.34.3_linux_amd64.tar.gz"
+  wget -c --tries=3 -O "frp.tar.gz" https://github.com/fatedier/frp/releases/download/v0.34.3/frp_0.34.3_linux_amd64.tar.gz
+  echo "开始解压压缩包: frp.tar.gz 到临时文件 ./temp"
+  mkdir ./temp
+  tar -zxvf frp.tar.gz --strip-components 1 -C ./temp/
+}
+
+method=$1
+download
+
+case $method in
+  (frps)
+     installFrps
+     ;;
+  (frpc)
+     installFrpc
+     ;;
+  (all)
+     installFrps
+     installFrpc
+     ;;
+  (*)
+     echo "Error command"
+     echo "$usage"
+     ;;
+esac
