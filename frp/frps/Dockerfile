@@ -3,12 +3,13 @@ MAINTAINER imjcker
 
 WORKDIR /
 ENV FRP_VERSION 0.34.3
-RUN set -x && \
-        wget --no-check-certificate https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_linux_amd64.tar.gz && \
-        tar xzf frp_${FRP_VERSION}_linux_amd64.tar.gz && \
-        cd frp_${FRP_VERSION}_linux_amd64
+RUN set -x \
+    && wget --no-check-certificate https://github.com/fatedier/frp/releases/download/v${FRP_VERSION}/frp_${FRP_VERSION}_linux_amd64.tar.gz \
+    && mkdir -p /frp \
+    && tar -xzf frp_${FRP_VERSION}_linux_amd64.tar.gz -C /frp --strip-components=1 \
+    && cd frp
 
-VOLUME /frp_${FRP_VERSION}_linux_amd64
+VOLUME /frp
 
-CMD /frp_${FRP_VERSION}_linux_amd64/frps -c /frp_${FRP_VERSION}_linux_amd64/frps.ini
+CMD /frp/frps -c /frp/frps.ini
 
