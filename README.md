@@ -5,6 +5,7 @@ scripts for development,deploy,tools...
     ```shell script
     curl "https://github.com/imjcker/EveryDoc/frp_installation_on_centos_7.sh" -o "frp_install.sh"
     
+   # docker run -d --name frpc --restart always -v /etc/frp/frpc.ini:/frp/frpc.ini imjcker/frpc:v0.34.3
     ```
 2. docker安装（centos7）
     ```shell script
