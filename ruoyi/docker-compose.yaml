@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+  ruoyi-admin:
+    image: imjcker/ruoyi:latest
+    container_name: ruoyi-admin
+    restart: always
+    hostname: ruoyi-admin
+    ports:
+      - 8080:8080
+    networks:
+      - ruoyi
+
+
+
+  ruoyi-ui:
+    image: imjcker/ruoyi-ng:latest
+    container_name: ruoyi-ui
+    links:
+      - ruoyi-admin
+    restart: always
+    hostname: ruoyi-ui
+    ports:
+    - 8081:80
+    volumes:
+    - './html:/usr/share/nginx/html:ro'
+    - './nginx.conf:/etc/nginx/nginx.conf:ro'
+    networks:
+      - ruoyi
+    depends_on:
+      - ruoyi-admin
+
+
+networks:
+  ruoyi:

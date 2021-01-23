@@ -1,0 +1,9 @@
+version: "3.1"
+services:
+  drawio:
+    image: jgraph/draw.io:latest
+    container_name: drawio
+    ports:
+      - "1080:8080"
+      - "1081:8443"
+    restart: always

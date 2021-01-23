@@ -1,0 +1,1 @@
+docker run -d --name draw -p 1080:8080 -p 1081:8443 jgraph/draw.io:latest
